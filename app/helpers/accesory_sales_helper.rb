@@ -1,0 +1,2 @@
+module AccesorySalesHelper
+end

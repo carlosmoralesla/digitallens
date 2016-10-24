@@ -1,0 +1,1 @@
+json.array! @info_sales, partial: 'info_sales/info_sale', as: :info_sale

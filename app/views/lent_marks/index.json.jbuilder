@@ -1,0 +1,1 @@
+json.array! @lent_marks, partial: 'lent_marks/lent_mark', as: :lent_mark

@@ -1,0 +1,16 @@
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Tipo Documento:</strong></div>
+  <div class="col-xs-6"><%= select_tag :type_doc_id, options_from_collection_for_select(@type_docs, 'id', 'name'),class: "form-control validate[required]",name: "client[type_doc_id]" %></div>
+</div>
+
+<% if params[:type_client_id].to_i == 2 %>
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Empresa:</strong></div>
+  <div class="col-xs-6"><%= text_field_tag "company_name",@var_name,  class: "form-control validate[required]",name: "client[company_name]" %></div>
+</div>
+<% end %>
+
+
+

@@ -1,0 +1,78 @@
+<% javascript "jquery/jquery-1.8.2.min.js" %>
+<% javascript "jquery/jquery.validationEngine","jquery/jquery.validationEngine-es" %>
+<% jquery_validationengine "validate_form" %>
+<% stylesheet "validationEngine.jquery" %>
+
+<%= form_for(lent_serial,:html => {id: "validate_form"}) do |f| %>
+  <% if lent_serial.errors.any? %>
+    <div id="error_explanation">
+      <h2 class="container alert alert-danger"><%= pluralize(lent_serial.errors.count, "error") %> encontrado:</h2>
+
+      <ul>
+      <% lent_serial.errors.full_messages.each do |message| %>
+        <li class="container alert alert-danger"><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Tipo:</strong></div>
+  <div class="col-xs-6"><%= f.collection_select :lent_kind_id ,@lent_kinds,:id,:name,{},class:"form-control" %></div>
+</div>
+
+<br>
+<% if @lent_serial.new_record? %>
+  <div class="row">
+    <div class="col-xs-3"><strong>Marca:</strong></div>
+    <div class="col-xs-6"><%= select_tag :lent_mark_id,"<option value=\"\">Seleccione</option>".html_safe+options_from_collection_for_select(@lent_marks, 'id', 'name'), :'data-remote' => 'true', :'data-url' => url_for( :action => 'find_type_model'),class: "form-control validate[required]" %></div>
+  </div>
+
+  <div id="type_model" ></div>
+<% else %>
+  <div class="row">
+    <div class="col-xs-3"><strong>Marca:</strong></div>
+    <div class="col-xs-6"><%= select_tag :lent_mark_id,options_from_collection_for_select(@lent_marks, 'id', 'name',@lent_serial.lent_model.lent_mark_id), :'data-remote' => 'true', :'data-url' => url_for( :action => 'find_type_model'),class: "form-control validate[required]" %></div>
+  </div>
+
+  <div id="type_model" >
+  <br>
+  <div class="row">
+    <div class="col-xs-3"><strong>Modelo:</strong></div>
+    <div class="col-xs-6"><%= select_tag :lent_model_id, options_from_collection_for_select(@lent_models, 'id', 'name',@lent_serial.lent_model_id),class: "form-control validate[required]",name: "lent_serial[lent_model_id]" %></div>
+  </div>
+  </div>
+<% end %>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Color:</strong></div>
+  <div class="col-xs-6"><%= f.collection_select :lent_color_id ,@lent_colors,:id,:name,{},class:"form-control" %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Serie:</strong></div>
+  <div class="col-xs-6"><%= f.text_field :name ,class:"form-control validate[required]" %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Precio de Costo:</strong></div>
+  <div class="col-xs-6"><%= f.text_field :price_cost ,class:"form-control validate[required]" %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Precio de Lista:</strong></div>
+  <div class="col-xs-6"><%= f.text_field :price_shop ,class:"form-control validate[required]" %></div>
+</div> 
+
+<br>
+<div class="actions" align="center">
+  <%= f.submit "Guardar", class: "btn btn-success" %>
+  <%= link_to 'Regresar', lent_serials_path , class: "btn btn-warning"%>
+</div>
+<% end %>
+

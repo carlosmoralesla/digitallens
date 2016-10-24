@@ -1,0 +1,83 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Digital Lens", new_user_session_path, class: "navbar-brand", id: "logo" %>
+    </div>
+
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+         <% if user_signed_in? %>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Cuenta <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Cambiar contraseña", edit_user_path(current_user) %></li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to "Cerrar Sessión", destroy_user_session_path, method: "delete" %>
+            </li>
+          </ul>
+        </li>
+        <% else %>
+          <li><%= link_to "Ingreso", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div><!--/.nav-collapse -->
+
+  </div>
+</nav>
+
+<% if user_signed_in? %>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <%= link_to "Inicio" ,dashboards_path %>
+                </li>
+                <li class="sidebar-brand">
+                    <%= link_to "Clientes" ,clients_path %>
+                </li>
+                <li class="sidebar-brand">
+                    <%= link_to "Historial de Consultas" ,history_clients_path %>
+                </li>                
+                <li class="sidebar-brand">
+                    <%= link_to "Marcas" ,lent_marks_path %>
+                </li>  
+                <li class="sidebar-brand">
+                    <%= link_to "Modelos" ,lent_models_path %>
+                </li>                                       
+                <li class="sidebar-brand">
+                    <%= link_to "Series" ,lent_serials_path %>
+                </li>      
+                <li class="sidebar-brand">
+                    <%= link_to "Colores de Lente" ,lent_colors_path %>
+                </li>   
+                <li class="sidebar-brand">
+                    <%= link_to "Accesorios de Lente" ,lent_accesories_path %>
+                </li>                                
+                <li class="sidebar-brand">
+                    <%= link_to "Tipo de Montura" ,monture_types_path %>
+                </li>     
+   
+                <li class="sidebar-brand">
+                    <%= link_to "Tipo de Lente" ,lent_kinds_path %>
+                </li>                                    
+
+                <li class="sidebar-brand">
+                    <%= link_to "Ventas" ,sales_path %>
+                </li>                                                                
+
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+<% end %>

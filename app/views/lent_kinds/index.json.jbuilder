@@ -1,0 +1,1 @@
+json.array! @lent_kinds, partial: 'lent_kinds/lent_kind', as: :lent_kind

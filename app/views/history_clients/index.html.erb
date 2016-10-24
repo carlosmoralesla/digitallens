@@ -1,0 +1,60 @@
+<h1 align="center">Historial de consultas</h1>
+<br>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Búsqueda</h4>
+  </div>
+  <div class="panel-body">
+    <%= form_for @query, url: [:search,:history_clients], html: { method: 'post'}  do %> 
+      <p><label>N°Consulta:</label>
+      <%= text_field_tag "search_code", params[:search_code], class: "form-control" %></p>
+      <p><%= submit_tag "Buscar",:class=>"btn bg-color-blueDark txt-color-white" %></p> 
+    <% end %>
+  </div>
+</div>
+
+<br>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>N°Consulta</th>
+        <th>Cliente</th>
+        <th>Anamnesis</th>
+        <th>F.Consulta</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @history_clients.each do |history_client| %>
+      <tr>
+        <td><%= history_client.num_consult %></td>
+        <td><%= history_client.client.str_complete_name %></td>
+        <td><%= history_client.anamnesis %></td>
+        <td><%= history_client.str_consult_date %></td>
+        <td>
+        <%= link_to "<span class='glyphicon glyphicon-zoom-in' aria-hidden='true'></span>".html_safe, history_client, class: "btn btn-info"  %>
+        <%= link_to "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>".html_safe, edit_history_client_path(history_client) ,class: "btn btn-success"  %>
+        <%= link_to "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span>".html_safe, history_client, class: "btn btn-danger", method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div  class="col-sm-6 text-main"><br/><br/>
+  <%= page_entries_info  @history_clients  , :page_links => false %>
+</div>
+
+<div  class="col-sm-6 text-right">
+  <%= will_paginate @history_clients, :params => params, :class => 'pagination2', :previous_label=>">", :next_label => ">",inner_window: 1, outer_window: 1 %>
+</div>
+
+
+
+
+ 
+
+ 

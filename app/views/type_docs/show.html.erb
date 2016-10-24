@@ -1,0 +1,20 @@
+
+<h1 align="center">Ver Tipo de Documento</h1>
+<br>
+
+<div class="row">
+  <div class="col-xs-3"><strong>Tipo de Cliente:</strong></div>
+  <div class="col-xs-6"><%= @type_doc.type_client.name %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Nombre:</strong></div>
+  <div class="col-xs-6"><%= @type_doc.name %></div>
+</div>
+
+<br>
+<div class="actions" align="center">
+  <%= link_to 'Editar', edit_type_doc_path(@type_doc), class: "btn btn-success" %>  
+  <%= link_to 'Regresar', type_docs_path , class: "btn btn-warning"%>
+</div>

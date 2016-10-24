@@ -1,0 +1,1 @@
+json.array! @lent_types, partial: 'lent_types/lent_type', as: :lent_type

@@ -1,0 +1,16 @@
+ 
+<h1 align="center">Ver Tipo de Montura</h1>
+<br>
+
+<div class="row">
+  <div class="col-xs-3"><strong>Nombre:</strong></div>
+  <div class="col-xs-6"><%= @monture_type.name %></div>
+</div>
+
+<br>
+<div class="actions" align="center"> 
+  <%= link_to 'Editar', edit_monture_type_path(@monture_type), class: "btn btn-success" %>  
+  <%= link_to 'Regresar', monture_types_path , class: "btn btn-warning"%>
+</div>
+
+ 

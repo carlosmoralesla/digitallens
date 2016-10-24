@@ -1,0 +1,29 @@
+ 
+<h1 align="center">Ver Accesorio de Lente</h1>
+<br>
+
+<div class="row">
+  <div class="col-xs-3"><strong>Nombre:</strong></div>
+  <div class="col-xs-6"><%= @lent_accesory.name %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Precio de Costo:</strong></div>
+  <div class="col-xs-6"><%= @lent_accesory.price_cost %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Precio de Lista:</strong></div>
+  <div class="col-xs-6"><%= @lent_accesory.price_shop %></div>
+</div>
+
+
+<br>
+<div class="actions" align="center"> 
+  <%= link_to 'Editar', edit_lent_accesory_path(@lent_accesory), class: "btn btn-success" %>  
+  <%= link_to 'Regresar', lent_accesories_path , class: "btn btn-warning"%>
+</div>
+
+  

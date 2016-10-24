@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @info_sale.quantity %>
+</p>
+
+<p>
+  <strong>Price sale:</strong>
+  <%= @info_sale.price_sale %>
+</p>
+
+<p>
+  <strong>Lent serial:</strong>
+  <%= @info_sale.lent_serial_id %>
+</p>
+
+<%= link_to 'Edit', edit_info_sale_path(@info_sale) %> |
+<%= link_to 'Back', info_sales_path %>

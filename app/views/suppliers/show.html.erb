@@ -1,0 +1,28 @@
+<h1 align="center">Ver Provedor</h1>
+<br>
+
+<div class="row">
+  <div class="col-xs-3"><strong>Tipo de Proveedor:</strong></div>
+  <div class="col-xs-6"><%= @supplier.type_doc.type_client.name %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Tipo de Documento:</strong></div>
+  <div class="col-xs-6"><%= @supplier.type_doc.name %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>N° Documento:</strong></div>
+  <div class="col-xs-6"><%= @supplier.num_doc %></div>
+</div>
+ 
+
+<br>
+<div class="actions" align="center">
+  <%= link_to 'Editar', edit_supplier_path(@supplier), class: "btn btn-success" %>  
+  <%= link_to 'Regresar', suppliers_path , class: "btn btn-warning"%>
+</div>
+
+  

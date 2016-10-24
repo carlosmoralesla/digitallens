@@ -1,0 +1,35 @@
+<style>
+
+.headerlogo {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 151px);
+    max-width: 100%;
+    min-height: auto;
+    text-align: center;
+    color: #fff;
+    background-image: url("/assets/aaa.png");
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+</style>
+
+  <div class="headerlogo">
+      <div class="header-content">
+          <div class="header-content-inner">
+              <h1>Bienvenidos a Digital Lens</h1>
+              <hr>
+              <h2>
+                Recuerda que los ojos son el reflejo del alma :)
+              </h2>
+             <%= link_to "Ingresar", new_user_session_path,class: "btn btn-primary btn-lg" %>
+              
+          </div>
+      </div>
+  </div>

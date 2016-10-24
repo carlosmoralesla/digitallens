@@ -1,0 +1,1 @@
+json.partial! "lent_marks/lent_mark", lent_mark: @lent_mark

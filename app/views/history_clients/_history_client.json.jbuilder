@@ -1,0 +1,2 @@
+json.extract! history_client, :id, :client_id, :anamnesis, :date_consult, :past_eye_left, :past_eye_right, :past_lent_type_id,:num_consult, :created_at, :updated_at
+json.url history_client_url(history_client, format: :json)

@@ -1,0 +1,7 @@
+$("#client_result").html('<%= j render partial: "sales/partials/client_result" %>')
+
+<% if @client.present? %>
+$("#client_info").html('<div class="col-xs-3"><strong>Cliente:</strong></div><div class="col-xs-6"><%= text_field_tag "var_client", @client.name.upcase ,class: "form-control validate[required]",:readonly =>true %><%= hidden_field_tag "client", @client.id, :name=>"sale[client_id]" %></div>')
+<% else %>
+$("#client_info").html('<div class="col-xs-3"><strong>Cliente:</strong></div><div class="col-xs-6"><%= text_field_tag "var_client", "",class: "form-control validate[required]",:readonly => true  %></div>')
+<% end %>

@@ -1,0 +1,32 @@
+<%= form_for(info_sale) do |f| %>
+  <% if info_sale.errors.any? %>
+    <div id="error_explanation">
+      <h2  class="container alert alert-danger"><%= pluralize(info_sale.errors.count, "error") %> encontrado:</h2>
+
+      <ul>
+      <% info_sale.errors.full_messages.each do |message| %>
+        <li  class="container alert alert-danger"><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price_sale %>
+    <%= f.text_field :price_sale %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lent_serial_id %>
+    <%= f.number_field :lent_serial_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

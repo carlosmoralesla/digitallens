@@ -1,0 +1,142 @@
+<% javascript "jquery/jquery-1.8.2.min.js" %>
+<% javascript "jquery/jquery.validationEngine","jquery/jquery.validationEngine-es" %>
+<% jquery_validationengine "validate_form" %>
+<% stylesheet "validationEngine.jquery" %>
+
+<%= form_for(history_client,:html => {id: "validate_form"}) do |f| %>
+  <% if history_client.errors.any? %>
+    <div id="error_explanation">
+      <h2 class="container alert alert-danger"><%= pluralize(history_client.errors.count, "error") %> encontrado:</h2>
+
+      <ul>
+      <% history_client.errors.full_messages.each do |message| %>
+        <li class="container alert alert-danger"><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ 
+<%= f.hidden_field :client_id, :value=> @client.id %>
+ 
+<div class="row">
+  <div class="col-xs-3"><strong>Fecha de consulta:</strong></div>
+  <div class="col-xs-6"><%= f.date_select :date_consult ,class:"form-control validate[required]" %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>N° de consulta:</strong></div>
+  <div class="col-xs-6"><%= f.text_field :num_consult ,class:"form-control validate[required]" %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Anamnesis:</strong></div>
+  <div class="col-xs-6"><%= f.text_field :anamnesis ,class:"form-control validate[required]" %></div>
+</div>
+
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Datos de la Medida Anterior</h4>
+  </div>
+  <div class="panel-body">
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Tipo de Lente:</strong></div>
+      <div class="col-xs-6"><%= f.collection_select :past_lent_type_id ,@lent_types,:id,:name,{},class:"form-control" %></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Medida O.I:</strong></div>
+      <div class="col-xs-6"><%= f.text_field :past_eye_left ,class:"form-control validate[opcional]" %></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Medida O.D:</strong></div>
+      <div class="col-xs-6"><%= f.text_field :past_eye_right ,class:"form-control validate[opcional]" %></div>
+    </div>    
+  </div>
+</div>
+
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Datos de la Medida Actual</h4>
+  </div>
+  <div class="panel-body">
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Tipo de Lente:</strong></div>
+      <div class="col-xs-6"><%= f.collection_select :current_lent_type_id ,@lent_types,:id,:name,{},class:"form-control" %></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Medida O.I:</strong></div>
+      <div class="col-xs-6"><%= f.text_field :current_eye_left ,class:"form-control validate[required]" %></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Medida O.D:</strong></div>
+      <div class="col-xs-6"><%= f.text_field :current_eye_right ,class:"form-control validate[required]" %></div>
+    </div>    
+  </div>
+</div>
+
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Adición</h4>
+  </div>
+  <div class="panel-body">
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Cerca:</strong></div>
+      <div class="col-xs-6"><%= f.text_field :add_near, class:"form-control validate[opcional]" %></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Intermedio:</strong></div>
+      <div class="col-xs-6"><%= f.text_field :add_intermedium ,class:"form-control validate[opcional]" %></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Alt:</strong></div>
+      <div class="col-xs-6"><%= f.text_field :add_alt ,class:"form-control validate[opcional]" %></div>
+    </div>    
+  </div>
+</div>
+
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Análisis Final</h4>
+  </div>
+  <div class="panel-body">
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Resultado:</strong></div>
+      <div class="col-xs-6"><%= f.text_area :result_info, class:"form-control validate[required]" %></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Recomendaciones:</strong></div>
+      <div class="col-xs-6"><%= f.text_area :recommend_info ,class:"form-control validate[opcional]" %></div>
+    </div>
+  </div>
+</div>
+
+<br>
+<div class="actions" align="center">
+  <%= f.submit "Guardar", class: "btn btn-success" %>
+  <%= link_to 'Regresar', client_path(@client) , class: "btn btn-warning"%>
+</div>
+<% end %>

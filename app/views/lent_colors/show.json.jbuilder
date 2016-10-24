@@ -1,0 +1,1 @@
+json.partial! "lent_colors/lent_color", lent_color: @lent_color

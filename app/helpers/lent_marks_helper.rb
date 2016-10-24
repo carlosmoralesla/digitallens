@@ -1,0 +1,2 @@
+module LentMarksHelper
+end

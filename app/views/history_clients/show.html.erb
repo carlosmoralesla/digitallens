@@ -1,0 +1,129 @@
+<h1 align="center">Ver Consulta</h1>
+<br>
+
+<div class="row">
+  <div class="col-xs-3"><strong>Fecha de consulta:</strong></div>
+  <div class="col-xs-6"><%= @history_client.date_consult  %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>N° de consulta:</strong></div>
+  <div class="col-xs-6"><%= @history_client.num_consult %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Anamnesis:</strong></div>
+  <div class="col-xs-6"><%= @history_client.anamnesis %></div>
+</div>
+
+<% if @history_client.past_eye_left.present? or @history_client.past_eye_right.present?%>
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Datos de la Medida Anterior</h4>
+  </div>
+  <div class="panel-body">
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Tipo de Lente:</strong></div>
+      <div class="col-xs-6"><%= @history_client.str_past_lent_type %></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Medida O.I:</strong></div>
+      <div class="col-xs-6"><%= @history_client.past_eye_left %></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Medida O.D:</strong></div>
+      <div class="col-xs-6"><%= @history_client.past_eye_right %></div>
+    </div>    
+  </div>
+</div>
+<% end %>
+
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Datos de la Medida Actual</h4>
+  </div>
+  <div class="panel-body">
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Tipo de Lente:</strong></div>
+      <div class="col-xs-6"><%= @history_client.str_current_lent_type %></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Medida O.I:</strong></div>
+      <div class="col-xs-6"><%= @history_client.current_eye_left %></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Medida O.D:</strong></div>
+      <div class="col-xs-6"><%= @history_client.current_eye_right %></div>
+    </div>    
+  </div>
+</div>
+ 
+<% if @history_client.add_near.present? or @history_client.add_intermedium.present? or @history_client.add_alt.present? %>
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Adición</h4>
+  </div>
+  <div class="panel-body">
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Cerca:</strong></div>
+      <div class="col-xs-6"><%= @history_client.add_near %></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Intermedio:</strong></div>
+      <div class="col-xs-6"><%= @history_client.add_intermedium %></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Alt:</strong></div>
+      <div class="col-xs-6"><%= @history_client.add_alt  %></div>
+    </div>    
+  </div>
+</div>
+<% end %>
+
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Análisis Final</h4>
+  </div>
+  <div class="panel-body">
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Resultado:</strong></div>
+      <div class="col-xs-6"><%= @history_client.result_info %></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Recomendaciones:</strong></div>
+      <div class="col-xs-6"><%= @history_client.recommend_info %></div>
+    </div>
+  </div>
+</div>
+
+<br>
+<div class="actions" align="center"> 
+  <%= link_to 'Editar', edit_history_client_path(@history_client), class: "btn btn-success" %>  
+  <%= link_to 'Regresar', client_path(@client.id) , class: "btn btn-warning"%>
+</div>
+
+ 

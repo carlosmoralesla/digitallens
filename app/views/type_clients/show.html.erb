@@ -1,0 +1,14 @@
+ 
+<h1 align="center">Ver Tipo de Cliente</h1>
+<br>
+
+<div class="row">
+  <div class="col-xs-3"><strong>Nombre:</strong></div>
+  <div class="col-xs-6"><%= @type_client.name %></div>
+</div>
+
+<br>
+<div class="actions" align="center"> 
+  <%= link_to 'Editar', edit_type_client_path(@type_client), class: "btn btn-success" %>  
+  <%= link_to 'Regresar', type_clients_path , class: "btn btn-warning"%>
+</div>

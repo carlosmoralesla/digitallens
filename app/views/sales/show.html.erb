@@ -1,0 +1,94 @@
+
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Datos del Cliente</h4>
+  </div>
+  <div class="panel-body">
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>N°Documento:</strong></div>
+      <div class="col-xs-6"><%= @sale.client.num_doc %></div>      
+    </div>  
+
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>Cliente:</strong></div>
+      <div class="col-xs-6"><%= @sale.client.str_complete_name %></div>      
+    </div>      
+  </div>
+</div>
+ 
+<br><br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Datos de la Boleta</h4>
+  </div>
+  <div class="panel-body">
+    <br>
+    <div id="client_info" class="row">
+      <div class="col-xs-3"><strong>N°Boleta:</strong></div>
+      <div class="col-xs-6"><%=@sale.num_sale %></div>
+    </div>    
+  </div>
+</div>
+
+<br><br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Datos de la Venta</h4>
+  </div>
+  <div class="panel-body">
+  	<div class="table-responsive">
+  	  <table class="table" id="info_sales">
+  	    <thead class="thead-inverse">
+  	      <tr>
+  	        <th>Cantidad</th>
+  	        <th>Serie del Lente</th>
+  	        <th>Precio de Venta</th>
+  	      </tr>
+  	    </thead>
+  	    <tbody>
+  	    <% @sale.info_sales.each do |info_sale_form| %>
+  	      <tr class="fields">
+  	        <td><%= info_sale_form.quantity %></td>
+  	        <td><%= info_sale_form.lent_serial.name %></td>
+  	        <td><%= info_sale_form.price_sale %></td>
+  	     </tr>
+  	     <% end %>      
+  	    </tbody>
+  	  </table>
+  	</div>
+  </div>
+</div>
+
+<% if @sale.accesory_sales.count > 0%>
+<br><br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Datos de Accesorios vendidos</h4>
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table" id="info_sales">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Cantidad</th>
+            <th>Accesorio</th>
+            <th>Precio de Venta</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @sale.accesory_sales.each do |accesory_sale_form| %>
+          <tr class="fields">
+            <td><%= accesory_sale_form.quantity %></td>
+            <td><%= accesory_sale_form.lent_accesory.name %></td>
+            <td><%= accesory_sale_form.price_sale %></td>
+         </tr>
+         <% end %>      
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<% end %>

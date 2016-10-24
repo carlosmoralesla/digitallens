@@ -1,0 +1,1 @@
+json.partial! "lent_serials/lent_serial", lent_serial: @lent_serial

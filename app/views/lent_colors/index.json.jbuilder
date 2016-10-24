@@ -1,0 +1,1 @@
+json.array! @lent_colors, partial: 'lent_colors/lent_color', as: :lent_color

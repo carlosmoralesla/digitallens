@@ -1,0 +1,2 @@
+module LentColorsHelper
+end

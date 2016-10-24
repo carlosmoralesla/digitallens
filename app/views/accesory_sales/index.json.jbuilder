@@ -1,0 +1,1 @@
+json.array! @accesory_sales, partial: 'accesory_sales/accesory_sale', as: :accesory_sale

@@ -1,0 +1,165 @@
+<% javascript "jquery/jquery-1.8.2.min.js" %>
+<% javascript "jquery/jquery.validationEngine","jquery/jquery.validationEngine-es" %>
+<% jquery_validationengine "doc_search_remote" %>
+<% jquery_validationengine "validate_form" %>
+<% stylesheet "validationEngine.jquery" %>
+
+
+<br>
+<%= form_for :find_client, url: search_client_sales_path, remote: true, html: { :id=>"doc_search_remote",method: 'get',class: "form-signin" } do |f| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Datos del Cliente</h4>
+  </div>
+  <div class="panel-body">
+    <p id="client_result"></p>
+    <br>
+    <div class="row">
+      <div class="col-xs-3"><strong>N°Documento:</strong></div>
+      <div class="col-xs-6"><%= text_field_tag "search_doc",params[:search_doc],:placeholder=>"Completar",class: "form-control validate[required]" %><button type="submit" class="btn btn-danger btn-sm">Buscar</button></div>      
+    </div>    
+  </div>
+</div>
+<% end %>
+
+<%= form_for(sale,:html => {id: "validate_form"}) do |f| %>
+  <% if sale.errors.any? %>
+    <div id="error_explanation">
+      <h2 class="container alert alert-danger"><%= pluralize(sale.errors.count, "error") %> encontrado:</h2>
+
+      <ul>
+      <% sale.errors.full_messages.each do |message| %>
+        <li class="container alert alert-danger"><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<br><br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Datos de la Boleta</h4>
+  </div>
+  <div class="panel-body">
+    <% if @sale.new_record? %>
+    <br>
+    <div id="client_info" class="row">
+      <div class="col-xs-3"><strong>Cliente:</strong></div>
+      <div class="col-xs-6"><%= text_field_tag "var",@var,:placeholder=>"Completar",class: "form-control validate[required]",:readonly=>true %></div>
+    </div>
+
+    <br>
+    <div id="client_info" class="row">
+      <div class="col-xs-3"><strong>N°Boleta:</strong></div>
+      <div class="col-xs-6"><%= f.text_field :num_sale,:placeholder=>"Completar",class: "form-control validate[required]" %></div>
+    </div>    
+    <% else %>
+    <br>
+    <div id="client_info" class="row">
+      <div class="col-xs-3"><strong>Cliente:</strong></div>
+      <div class="col-xs-6"><%= text_field_tag "var",@client.str_complete_name,:placeholder=>"Completar",class: "form-control validate[required]",:readonly=>true %></div>
+    </div>
+    <br>
+    <div id="client_info" class="row">
+      <div class="col-xs-3"><strong>N°Boleta:</strong></div>
+      <div class="col-xs-6"><%= f.text_field :num_sale,:placeholder=>"Completar",class: "form-control validate[required]" %></div>
+    </div>      
+    <% end %> 
+  </div>
+</div>
+
+<br><br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Datos de la Venta</h4>
+  </div>
+  <div class="panel-body">
+
+    <script>
+      $.noConflict();
+      $(document).ready(function(){
+        function init_select1(selector){
+          $(selector).select2({
+            placeholder: "Seleccione",
+            allowClear: true
+          });
+        };
+        function init_select2(selector2){
+          $(selector2).select2({
+            placeholder: "Seleccione",
+            allowClear: true
+          });
+        };        
+        init_select1(".selection")
+        init_select2(".selection2")
+
+        $("form").on("cocoon:after-insert", function(_, row){
+          field1 = $(row1).find(".selection")
+          init_select1(field1);
+        });    
+        $("form2").on("cocoon:after-insert", function(_, row2){
+          field2 = $(row2).find(".selection2")
+          init_select2(field2);
+        });           
+      });
+     
+    </script>    
+
+    <%= link_to_add_association "Agregar Otro Lente", f, :info_sales, data: {"association-insertion-node" => ".info_sales", "association-insertion-method" => "append"},:class=>"btn btn-success" %>
+    <br><br>
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Cantidad</th>
+            <th>Serie/costos</th>
+            <th>Precio Final</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="info_sales">
+        <%= f.fields_for :info_sales do |info_sale| %>
+          <%= render 'info_sale_fields', f: info_sale %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+<br><br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Datos de Accesorios</h4>
+  </div>
+  <div class="panel-body">
+
+    
+
+    <%= link_to_add_association "Agregar Otro Lente", f, :accesory_sales, data: {"association-insertion-node" => ".accesory_sales", "association-insertion-method" => "append"},:class=>"btn btn-success" %>
+    <br><br>
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Cantidad</th>
+            <th>Serie/costos</th>
+            <th>Precio Final</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="accesory_sales">
+        <%= f.fields_for :accesory_sales do |accesory_sale| %>
+          <%= render 'accesory_sale_fields', f: accesory_sale %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+     
+    <br>
+    <div class="actions" align="center">
+      <%= f.submit "Guardar", class: "btn btn-success" %>
+      <%= link_to 'Regresar', sales_path , class: "btn btn-warning"%>
+    </div>
+    <% end %>
+  </div>
+</div>
+

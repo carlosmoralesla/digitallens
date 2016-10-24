@@ -1,0 +1,1 @@
+json.partial! "monture_types/monture_type", monture_type: @monture_type

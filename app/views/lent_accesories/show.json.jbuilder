@@ -1,0 +1,1 @@
+json.partial! "lent_accesories/lent_accesory", lent_accesory: @lent_accesory

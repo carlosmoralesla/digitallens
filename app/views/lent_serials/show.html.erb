@@ -1,0 +1,47 @@
+ 
+<h1 align="center">Ver Serie de Lente</h1>
+<br>
+
+<div class="row">
+  <div class="col-xs-3"><strong>Marca:</strong></div>
+  <div class="col-xs-6"><%= @lent_serial.lent_model.lent_mark.name %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Modelo:</strong></div>
+  <div class="col-xs-6"><%= @lent_serial.lent_model.name %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Serie:</strong></div>
+  <div class="col-xs-6"><%= @lent_serial.name %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Color:</strong></div>
+  <div class="col-xs-6"><%= @lent_serial.lent_color.name %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Precio de Costo:</strong></div>
+  <div class="col-xs-6">S/.<%= @lent_serial.price_cost %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Precio de Lista:</strong></div>
+  <div class="col-xs-6">S/.<%= @lent_serial.price_shop %></div>
+</div>
+
+<br>
+<div class="actions" align="center"> 
+  <%= link_to 'Editar', edit_lent_serial_path(@lent_serial), class: "btn btn-success" %>  
+  <%= link_to 'Regresar', lent_serials_path , class: "btn btn-warning"%>
+</div>
+
+  
+ 

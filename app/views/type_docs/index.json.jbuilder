@@ -1,0 +1,1 @@
+json.array! @type_docs, partial: 'type_docs/type_doc', as: :type_doc

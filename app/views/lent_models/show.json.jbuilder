@@ -1,0 +1,1 @@
+json.partial! "lent_models/lent_model", lent_model: @lent_model

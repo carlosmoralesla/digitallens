@@ -1,0 +1,23 @@
+ 
+<h1 align="center">Ver Modelo de Lente</h1>
+<br>
+
+<div class="row">
+  <div class="col-xs-3"><strong>Marca:</strong></div>
+  <div class="col-xs-6"><%= @lent_model.lent_mark.name %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Modelo:</strong></div>
+  <div class="col-xs-6"><%= @lent_model.name %></div>
+</div>
+
+<br>
+<div class="actions" align="center"> 
+  <%= link_to 'Editar', edit_lent_model_path(@lent_model), class: "btn btn-success" %>  
+  <%= link_to 'Regresar', lent_models_path , class: "btn btn-warning"%>
+</div>
+
+  
+ 

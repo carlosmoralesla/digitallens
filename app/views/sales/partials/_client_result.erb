@@ -1,0 +1,13 @@
+<% if @client.present? %>
+	<div class="alert alert-success fade in">
+    	<i class="fa-fw fa fa-check"></i>
+		<strong>Se encontró:</strong> <%= @client.str_complete_name.upcase %>.
+	</div> 
+<% else %>
+	<div class="alert alert-danger fade in">
+     	<i class="fa-fw fa fa-times"></i>
+		<strong>No se encontraron resultados.</strong>
+	</div> 
+<% end %>
+
+

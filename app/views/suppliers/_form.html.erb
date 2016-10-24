@@ -1,0 +1,60 @@
+<% javascript "jquery/jquery-1.8.2.min.js" %>
+<% javascript "jquery/jquery.validationEngine","jquery/jquery.validationEngine-es" %>
+<% jquery_validationengine "validate_form" %>
+<% stylesheet "validationEngine.jquery" %>
+
+<%= form_for(supplier,:html => {id: "validate_form"}) do |f| %>
+  <% if supplier.errors.any? %>
+    <div id="error_explanation">
+      <h2 class="container alert alert-danger"><%= pluralize(supplier.errors.count, "error") %> encontrado:</h2>
+
+      <ul>
+      <% supplier.errors.full_messages.each do |message| %>
+        <li class="container alert alert-danger"><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<% if @supplier.new_record? %>
+  <div class="row">
+    <div class="col-xs-3"><strong>Tipo de Cliente:</strong></div>
+    <div class="col-xs-6"><%= select_tag :type_client_id,"<option value=\"\">Seleccione</option>".html_safe+options_from_collection_for_select(@type_clients, 'id', 'name'), :'data-remote' => 'true', :'data-url' => url_for( :action => 'find_type_doc'),class: "form-control validate[required]" %></div>
+  </div>
+
+  <div id="type_doc" ></div>
+<% else %>
+  <div class="row">
+    <div class="col-xs-3"><strong>Tipo de Cliente:</strong></div>
+    <div class="col-xs-6"><%= select_tag :type_client_id,options_from_collection_for_select(@type_clients, 'id', 'name',@supplier.type_doc.type_client_id), :'data-remote' => 'true', :'data-url' => url_for( :action => 'find_type_doc'),class: "form-control validate[required]" %></div>
+  </div>
+
+  <div id="type_doc" >
+  <br>
+  <div class="row">
+    <div class="col-xs-3"><strong>Tipo Documento:</strong></div>
+    <div class="col-xs-6"><%= select_tag :type_doc_id, options_from_collection_for_select(@type_docs, 'id', 'name',@supplier.type_doc_id),class: "form-control validate[required]",name: "supplier[type_doc_id]" %></div>
+  </div>
+<% end %>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Nombres:</strong></div>
+  <div class="col-xs-6"> <%= f.text_field :name, class:"form-control validate[required]"  %></div>
+</div>    
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>N°Documento:</strong></div>
+  <div class="col-xs-6"> <%= f.text_field :num_doc, class:"form-control validate[required]"  %></div>
+</div>    
+
+
+
+<br>
+<div class="actions" align="center">
+  <%= f.submit "Guardar", class: "btn btn-success" %>
+  <%= link_to 'Regresar', suppliers_path , class: "btn btn-warning"%>
+</div>
+<% end %>
+

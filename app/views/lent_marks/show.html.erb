@@ -1,0 +1,16 @@
+ 
+<h1 align="center">Ver Marca de Lente</h1>
+<br>
+
+<div class="row">
+  <div class="col-xs-3"><strong>Nombre:</strong></div>
+  <div class="col-xs-6"><%= @lent_mark.name %></div>
+</div>
+
+<br>
+<div class="actions" align="center"> 
+  <%= link_to 'Editar', edit_lent_mark_path(@lent_mark), class: "btn btn-success" %>  
+  <%= link_to 'Regresar', lent_marks_path , class: "btn btn-warning"%>
+</div>
+
+ 

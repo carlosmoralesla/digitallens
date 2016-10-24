@@ -1,0 +1,16 @@
+es:
+  will_paginate:
+    next_label: Siguiente →
+    page_entries_info:
+      multi_page: Mostrando %{from} - %{to} de %{count} resultados
+      multi_page_html: Mostrando <b>%{from}&nbsp;-&nbsp;%{to}</b> de <b>%{count}</b> resultados
+      single_page:
+        one: Mostrando 1 resultado
+        other: Mostrando en total %{count} resultados
+        zero: No se encontraron resultados
+      single_page_html:
+        one: Mostrando <b>1</b> resultado
+        other: Mostrando en <b>total&nbsp;%{count}</b> resultados
+        zero: No se encontraron resultados
+    page_gap: "..."
+    previous_label: "← Atrás"

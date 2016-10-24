@@ -1,0 +1,1 @@
+json.partial! "type_clients/type_client", type_client: @type_client

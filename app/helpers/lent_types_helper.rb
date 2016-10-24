@@ -1,0 +1,2 @@
+module LentTypesHelper
+end

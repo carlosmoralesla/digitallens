@@ -1,0 +1,1 @@
+json.array! @type_clients, partial: 'type_clients/type_client', as: :type_client

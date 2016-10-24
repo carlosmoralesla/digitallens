@@ -1,0 +1,83 @@
+<h1 align="center">Ver Cliente</h1>
+<br>
+
+<div class="row">
+  <div class="col-xs-3"><strong>Tipo de Cliente:</strong></div>
+  <div class="col-xs-6"><%= @client.type_doc.type_client.name %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Tipo de Documento:</strong></div>
+  <div class="col-xs-6"><%= @client.type_doc.name %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>N° Documento:</strong></div>
+  <div class="col-xs-6"><%= @client.num_doc %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Nombre:</strong></div>
+  <div class="col-xs-6"><%= @client.name.capitalize %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Apellido Paterno:</strong></div>
+  <div class="col-xs-6"><%= @client.last_name.capitalize  %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Apellido Materno:</strong></div>
+  <div class="col-xs-6"><%= @client.second_surname.capitalize  %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Edad:</strong></div>
+  <div class="col-xs-6"><%= @client.age %></div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col-xs-3"><strong>Sexo:</strong></div>
+  <div class="col-xs-6"><%= @client.str_sex %></div>
+</div>
+
+<br>
+<div class="actions" align="center">
+  <%= link_to 'Editar', edit_client_path(@client), class: "btn btn-success" %>  
+  <%= link_to 'Regresar', clients_path , class: "btn btn-warning"%>
+</div>
+
+<h1 align="center">Historiales de medidas</h1>
+<br> 
+<%= link_to 'Nuevo Historial', new_client_history_client_path(@client.id), class: "btn btn-primary" %>
+<br> <br>
+<div class="table-responsive">
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Consulta</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @client.history_clients.each do |history_client| %>
+      <tr>
+        <td>Medidad realizada <b><%= history_client.date_consult %></b></td>
+        <td>
+        <%= link_to "<span class='glyphicon glyphicon-zoom-in' aria-hidden='true'></span>".html_safe, history_client , class: "btn btn-info"%>
+        <%= link_to "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>".html_safe, edit_history_client_path(history_client) ,class: "btn btn-success" %>
+        <%= link_to "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span>".html_safe, history_client, method: :delete, data: { confirm: 'Estas seguro?' },class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

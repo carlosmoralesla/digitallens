@@ -1,0 +1,29 @@
+<% javascript "jquery/jquery-1.8.2.min.js" %>
+<% javascript "jquery/jquery.validationEngine","jquery/jquery.validationEngine-es" %>
+<% jquery_validationengine "validate_form" %>
+<% stylesheet "validationEngine.jquery" %>
+
+<%= form_for(lent_type,:html => {id: "validate_form"}) do |f| %>
+  <% if lent_type.errors.any? %>
+    <div id="error_explanation">
+      <h2 class="container alert alert-danger"><%= pluralize(lent_type.errors.count, "error") %> encontrado:</h2>
+
+      <ul>
+      <% lent_type.errors.full_messages.each do |message| %>
+        <li class="container alert alert-danger"><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row">
+  <div class="col-xs-3"><strong>Nombre:</strong></div>
+  <div class="col-xs-6"><%= f.text_field :name ,class:"form-control validate[required]" %></div>
+</div>
+
+<br>
+<div class="actions" align="center">
+  <%= f.submit "Guardar", class: "btn btn-success" %>
+  <%= link_to 'Regresar', lent_types_path , class: "btn btn-warning"%>
+</div>
+<% end %>
